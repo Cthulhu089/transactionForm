@@ -1,0 +1,67 @@
+.titulo {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 6%;
+  color: rgb(77, 77, 77);
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  max-width: 700px;
+}
+
+.container-layout {
+  width: 100%;
+  margin: auto;
+  max-width: 700px;
+}
+
+.container .btn-primary {
+  height: 53px;
+  background: #fedb07;
+  border: #fedb07;
+  color: #515050;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.btn-primary .container .btn-primary:active,
+.container .btn-primary.active,
+.container .btn-primary:focus,
+.container .btn-primary:hover,
+.container .ant-btn-primary {
+  background: #fedb07;
+  border: #fedb07;
+  color: #515050;
+}
+
+.btn-primary .container .btn-primary:active,
+.container .btn-primary.active,
+.container .btn-primary:focus,
+.container .btn-primary:hover,
+.container .ant-btn-primary {
+  background: #fedb07;
+  border: #fedb07;
+  color: #515050;
+}
+
+.btn-primary .option-container .btn-primary:active,
+.option-container .btn-primary.active,
+.option-container .btn-primary:focus,
+.option-container .btn-primary:hover,
+.option-container .ant-btn-primary {
+  background: #fedb07;
+  border: #fedb07;
+  color: #515050;
+}
+
+.option-container {
+}
+
+
+@media only screen and (min-width: 600px) {
+  .container {
+    width: 50%;
+  }
+}
