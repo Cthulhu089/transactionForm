@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Button } from "antd";
-
+import "./CustomButton.css"
 const CustomButton = ({
   className,
   label,

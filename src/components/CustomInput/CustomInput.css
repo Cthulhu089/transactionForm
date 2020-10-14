@@ -1,0 +1,30 @@
+.account-input {
+  width: 80%;
+  margin-bottom: 15px !important;
+  margin-top: 10px !important;
+}
+
+#from-account-label {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.to-account-input {
+  width: 80%;
+  margin-bottom: 15px !important;
+}
+
+#to-account-label {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.amount-input {
+  width: 80%;
+  margin-bottom: 15px !important;
+}
+
+#amount-label{
+    font-weight: bold;
+    font-size: 24px;
+}

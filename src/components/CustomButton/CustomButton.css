@@ -1,0 +1,13 @@
+.submit-button {
+    background-color: #ff7f50;
+    border-color: #ff7f50;
+    margin-left: 83px;
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.submit-button:hover, .submit-button:focus {
+    color: #fff;
+    background-color: #f85e26;
+    border-color: #ff7f50;
+}
