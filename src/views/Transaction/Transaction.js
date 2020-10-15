@@ -17,8 +17,7 @@ const Transaction = () => {
   var formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-    maximumFractionDigits: 2,
-    minimumFractionDigits: 2
+    maximumFractionDigits: 2
   });
 
   const [totalAmount, setTotalAmount] = useState(5824.76);
@@ -40,25 +39,25 @@ const Transaction = () => {
       date: "10/14/2020",
       account: "The tea Company",
       description: "Card payment",
-      amount: 82.02,
+      amount: 28.02,
     },
     {
       date: "10/13/2020",
       account: "The tea Company",
       description: "Card payment",
-      amount: 81.02,
+      amount: 8.02,
     },
     {
       date: "10/12/2020",
       account: "The tea Company",
       description: "Card payment",
-      amount: 80.02,
+      amount: 38.02,
     },
     {
       date: "10/11/2020",
       account: "The tea Company",
       description: "Card payment",
-      amount: 79.02,
+      amount: 59.02,
     },
   ]);
   const [transferListTemp, setTransferListTemp] = useState(transferList);
@@ -154,13 +153,12 @@ const Transaction = () => {
     }
     if (filter === "date") {
       newList = sortBy(transferList, (a) => {
-        return moment(a[filter]).format("MM"), moment(a[filter]).format("DD");
+        return (moment(a[filter]).format("MM"), moment(a[filter]).format("DD"));
       });
     } else {
       newList = sortBy(transferList, (a) => a[filter]);
     }
     if (sort === "DESC") {
-      console.log(2);
       newList.reverse();
     }
     setTransferList(newList);
