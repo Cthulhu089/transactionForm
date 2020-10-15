@@ -1,7 +1,5 @@
 import React from "react";
-import arrows from "../../assets/icons/arrows.png";
 import "./CustomContainer.css";
-import CachedIcon from "@material-ui/icons/Cached";
 
 const CustomContainer = ({ icon, title, children, className }) => {
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "antd";
 import "./CustomButton.css"
@@ -10,7 +10,8 @@ const CustomButton = ({
   onClick,
   shape,
   size,
-  disabled
+  disabled,
+  ghost
 }) => {
   return (
     <Button
@@ -23,6 +24,7 @@ const CustomButton = ({
       disabled={disabled}
       shape={shape}
       size={size}
+      ghost={ghost}
     >
       {label}
     </Button>
@@ -38,6 +40,8 @@ CustomButton.propTypes = {
 
 CustomButton.defaultProps = {
   disabled: false,
+  type: "primary",
+  ghost: false,
 }
 
 export default CustomButton;

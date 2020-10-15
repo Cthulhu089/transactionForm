@@ -9,12 +9,12 @@ const CustomTransactionCard = ({ date, account, amount, description }) => {
       <div className="date-container">{`${moment(date).format("MMM")} ${moment(
         date
       ).format("DD")}`}</div>
-      <img className="image-container" src={store} />
+      <img alt="account" className="image-container" src={store} />
       <div className="description-container">
         <div>{account}</div>
         <div>{description}</div>
       </div>
-      <div className="amount-container">{`-$${amount}`}</div>
+      <div className="amount-container">{`- ${amount}`}</div>
     </div>
   );
 };

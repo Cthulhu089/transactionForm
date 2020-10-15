@@ -8,9 +8,47 @@
 
 .transaction-form {
   margin-left: 50px;
-} 
+}
 
 .transaction-list {
   margin-left: 50px;
   margin-top: 15px;
+  padding-bottom: 20px;
+}
+
+.list-section {
+  margin-top: 15px;
+}
+
+.filter-section {
+  display: flex;
+}
+
+.search-input {
+  width: 40%;
+}
+
+.sort-label {
+  margin-left: 3%;
+  margin-top: 17px;
+  width: 9%;
+}
+
+#search-label {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.buttons-section {
+  margin-top: 13px;
+  width: 35%;
+}
+
+.clear-filter {
+  color: #1890ff;
+  margin-top: 19px;
+}
+
+.error-label {
+  color: #ff0000;
 }
