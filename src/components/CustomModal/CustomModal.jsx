@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Button } from "antd";
-
+import './CustomModal.css'
 const CustomModal = ({
   title,
   onOk,
@@ -26,6 +26,7 @@ const CustomModal = ({
           </Button>,
           <Button
             key="submit"
+            className="submit-button"
             type={submitButtonType}
             loading={loading}
             onClick={onOk}

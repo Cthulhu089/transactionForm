@@ -1,0 +1,35 @@
+.card-container {
+    border-color: #808080;
+    border: 1px solid #ccc;
+    width: 90%;
+    display: flex;
+}
+
+.image-container {
+    width: 70px;
+    margin-left: 8%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.date-container {
+    margin-left: 2%;
+    margin-top: 23px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.description-container {
+    margin-left: 8%;
+    width: 19%;
+    margin-top: 13px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.amount-container {
+    margin-left: 30%;
+    margin-top: 23px;
+    font-weight: bold;
+    font-size: 15px;
+}

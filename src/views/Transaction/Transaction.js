@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Transaction.css";
+import moment from "moment";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomModal from "../../components/CustomModal/CustomModal";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import CustomContainer from "../../components/CustomContainer/CustomContainer";
+import CustomTransactionCard from "../../components/CustomTransactionCard/CustomTransactionCard";
 import CachedIcon from "@material-ui/icons/Cached";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import { connect } from "react-redux";
@@ -13,10 +15,6 @@ const Transaction = () => {
   var formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-
-    // These options are needed to round to whole numbers if that's what you want.
-    //minimumFractionDigits: 0,
-    //maximumFractionDigits: 0,
   });
 
   const [totalAmount, setTotalAmount] = useState(5824.76);
@@ -32,9 +30,35 @@ const Transaction = () => {
   const [toAccountError, setToAccountError] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
-  const handleOnchangeAmount = (value) => {
-    var regex = /^\d+(?:\.\d{0,2})$/;
+  const regex = /^[1-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;
+  const [transferList, setTransferList] = useState([
+    {
+      date: "10/14/2020",
+      account: "The tea Company",
+      description: "Card payment",
+      amount: "82.02",
+    },
+  ]);
+  const validateForm = () => {
+    let isValid = true;
+    if (
+      regex.test(amount) === false ||
+      amount === "0.00" ||
+      amount === 0 ||
+      amount === "0"
+    ) {
+      setAmountError(true);
+      isValid = false;
+    }
+    if (toAccount === "") {
+      setToAccountError(true);
+      isValid = false;
+    }
 
+    return isValid;
+  };
+
+  const handleOnchangeAmount = (value) => {
     if (regex.test(value) || value === "") {
       setAmount(value);
       setAmountError(false);
@@ -52,6 +76,28 @@ const Transaction = () => {
       setToAccount(value);
       setToAccountError(true);
     }
+  };
+
+  const handleOnTransfer = async () => {
+    setShowLoading(true);
+    const totalAfterTransfer = totalAmount - parseFloat(amount);
+    setTotalAmount(totalAfterTransfer);
+    setAccount(`Free checking (4692) ${totalAfterTransfer}`);
+    setAmount("0.00");
+    setToAccount("");
+    setShowLoading(false);
+
+    await setTransferList([
+      ...transferList,
+      {
+        date: moment().format("MM/DD/YYYY"),
+        account: toAccount,
+        description: "Card payment",
+        amount: parseFloat(amount),
+      },
+    ]);
+
+    setShowConfirmationModal(false);
   };
 
   return (
@@ -110,7 +156,9 @@ const Transaction = () => {
             className={"submit-button"}
             label={"Submit"}
             onClick={() => {
-              setShowConfirmationModal(true)
+              if (validateForm() === true) {
+                setShowConfirmationModal(true);
+              }
             }}
           />
         </div>
@@ -121,17 +169,30 @@ const Transaction = () => {
         title={"Recent Transaction"}
         className="list-container"
       >
-        hola
+        <div className="transaction-list">
+          {transferList.map((item, index) => (
+            <CustomTransactionCard
+              date={item.date}
+              description={item.description}
+              account={item.account}
+              amount={item.amount}
+            />
+          ))}
+        </div>
       </CustomContainer>
       <CustomModal
         title="Transaction Confirmation"
-        onOk={() => {}}
+        onOk={() => {
+          handleOnTransfer();
+        }}
         visible={showConfirmationModal}
         loading={showLoading}
         onCancel={() => {
-          setShowConfirmationModal(false)
+          setShowConfirmationModal(false);
         }}
-        content="Hola"
+        content={`You will be transferring to ${toAccount} ${formatter.format(
+          amount
+        )}`}
         cancelButtonType="link"
         cancelButtonLabel="go back"
         submitButtonLabel="transfer"
